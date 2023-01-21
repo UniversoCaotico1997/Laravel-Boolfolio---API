@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TypeController;
-use App\Http\Controllers\API\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +32,6 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     ]);
     Route::resource('types', TypeController::class)->except(['show', 'create', 'edit']);
     Route::resource('technologies', TechnologyController::class)->except(['show', 'create', 'edit']);
-    Route::get('/test-api', [PostController::class, 'index']);
 });
 
 require __DIR__ . '/auth.php';
