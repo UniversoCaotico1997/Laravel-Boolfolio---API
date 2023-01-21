@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use App\Models\Type;
 use Illuminate\Support\Facades\Auth;
 
+
 class ProjectController extends Controller
 {
     /**
@@ -21,10 +22,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        // ci permette di visualizzare i post creati da un singolo user 
+        // ci permette di visualizzare i post creati da un singolo user, 
+        // grazie alla relazione creata tra Porject e users
         // $projects = Auth::user()->projects;
 
-        $projects = Project::orderByDesc('id')->get();
+
+        // Order by desc + paginate
+        $projects = Project::orderByDesc('id')->paginate(8);
 
         return view('admin.projects.index', compact('projects'));
     }

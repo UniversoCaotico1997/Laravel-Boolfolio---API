@@ -10,10 +10,10 @@ class PostController extends Controller
 {
     public function index()
     {
-        $projects = Project::with('Types', 'Technologies')->paginate(3);
+        $projects = Project::with('Types', 'Technologies')->orderByDesc('id')->paginate(5);
         return response()->json([
             'success' => true,
-            'results' => $projects
+            'data' => $projects
         ]);
     }
 }

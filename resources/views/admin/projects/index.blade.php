@@ -108,6 +108,6 @@
     </table>
 </div>
 
-
+{{ $projects->links('vendor.pagination.bootstrap-5') }}
 
 @endsection
