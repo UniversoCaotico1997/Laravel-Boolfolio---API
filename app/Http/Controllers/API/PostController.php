@@ -15,7 +15,7 @@ class PostController extends Controller
         $project = Project::with('Type', 'Technologies')->orderByDesc('id')->paginate(5);
         return response()->json([
             'success' => true,
-            'data' => $project
+            'results' => $project
         ]);
     }
 }
