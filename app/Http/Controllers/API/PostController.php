@@ -18,4 +18,21 @@ class PostController extends Controller
             'results' => $project
         ]);
     }
+
+
+    public function show($slug)
+    {
+        $project = Project::with('Type', 'Technologies', 'user')->where('slug', $slug)->first();
+        if ($project) {
+            return response()->json([
+                'success' => true,
+                'results' => $project
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'error' => 'post not found'
+            ]);
+        }
+    }
 }
